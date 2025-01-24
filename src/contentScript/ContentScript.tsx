@@ -5,10 +5,10 @@ import { createRoot } from "react-dom/client";
 import styled from "styled-components";
 
 const render = async () => {
-  const container = document.createElement("div");
-  document.body.appendChild(container);
-  const root = createRoot(container);
-  root.render(<App />);
+  // const container = document.createElement("div");
+  // document.body.appendChild(container);
+  // const root = createRoot(container);
+  // root.render(<App />);
 };
 
 // chrome.storage.onChanged.addListener((changes) => {

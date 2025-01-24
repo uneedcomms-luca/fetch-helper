@@ -6,9 +6,12 @@ import "../style/global.css";
 
 const App = () => {
   return (
-    <MemoryRouter initialEntries={["/main"]}>
-      <PopupRouter />
-    </MemoryRouter>
+    <>
+      <img className="kg_logo" src="logo.png" />
+      <MemoryRouter initialEntries={["/login"]}>
+        <PopupRouter />
+      </MemoryRouter>
+    </>
   );
 };
 

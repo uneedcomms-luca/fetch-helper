@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap"); */
 
 body {
-  font-family: "Hi Melody", serif;
+  /* font-family: "Hi Melody", serif; */
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -9,27 +9,24 @@ body {
   padding: 0;
   margin: 0;
 }
-.title_header {
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
+
+.kg_logo {
+  width: 120px;
+  height: 25px;
+  margin: 20px 0 0 20px;
 }
-.title_header h2 {
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 600;
-  margin-bottom: 20px;
+
+section {
+  width: 300px;
+  min-height: 300px;
+  background-color: var(--white);
+  padding: 20px;
 }
-.title_header .icon {
+section.flex-box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 10px;
-}
-.title_header .icon img {
-  width: 100px;
-  height: 100px;
+  align-items: center;
 }
 
 /* 변수 선언 */
