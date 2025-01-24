@@ -4,6 +4,12 @@ const useInput = (initialValue, validator?) => {
   const [value, setValue] = useState(initialValue);
 
   const onChange = (event) => {
+    // event가 checkbox일 경우
+    if (event.target.type === "checkbox") {
+      setValue(event.target.checked);
+      return;
+    }
+
     const {
       target: { value }
     } = event;

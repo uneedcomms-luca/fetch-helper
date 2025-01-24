@@ -10,7 +10,7 @@ const PatchSelectPage = () => {
       <div className="title">
         <div>패치할 호스팅사를 선택해주세요.</div>
       </div>
-      <div className="button_wrapper ">
+      <div className="button_wrapper mt-3">
         {hostings.map((hosting) => (
           <Button key={hosting} size="large" type="primary" block>
             <Link to={`${hosting}`}>{hosting.toUpperCase()} </Link>

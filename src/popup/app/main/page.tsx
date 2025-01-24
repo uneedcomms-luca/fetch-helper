@@ -18,7 +18,7 @@ const PopupMainPage = () => {
         <div>{user.email}</div>
       </div>
 
-      <div className="button_wrapper">
+      <div className="button_wrapper mt-3">
         <Button size="large" block disabled>
           검수 시작하기
         </Button>

@@ -1,8 +1,8 @@
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useNavigate } from "react-router-dom";
 
 import "../style/global.css";
-import Router from "../router";
+import Router from "./router";
 
 const ContentScriptApp = () => {
   return (
@@ -15,3 +15,4 @@ const ContentScriptApp = () => {
 };
 
 export default ContentScriptApp;
+
