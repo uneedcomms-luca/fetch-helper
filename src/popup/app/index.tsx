@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <img className="kg_logo" src="logo.png" />
-      <MemoryRouter initialEntries={["/login"]}>
+      <MemoryRouter initialEntries={["/main"]}>
         <PopupRouter />
       </MemoryRouter>
     </>

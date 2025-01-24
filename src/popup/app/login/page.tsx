@@ -13,27 +13,25 @@ const PopupLoginPage = () => {
   };
 
   return (
-    <section>
-      <Wrapper>
-        <div className="input_wrapper">
-          <Input size="large" placeholder="킵그로우 아이디를 입력해 주세요" value={id} onChange={onChangeId} />
-          <Input
-            size="large"
-            placeholder="비밀번호를 입력해 주세요"
-            value={password}
-            onChange={onChangePassword}
-            type="password"
-          />
-        </div>
+    <Wrapper>
+      <div className="input_wrapper">
+        <Input size="large" placeholder="킵그로우 아이디를 입력해 주세요" value={id} onChange={onChangeId} />
+        <Input
+          size="large"
+          placeholder="비밀번호를 입력해 주세요"
+          value={password}
+          onChange={onChangePassword}
+          type="password"
+        />
+      </div>
 
-        <Button size="large" type="primary" block onClick={onSubmit}>
-          로그인
-        </Button>
-      </Wrapper>
-    </section>
+      <Button size="large" type="primary" block onClick={onSubmit}>
+        로그인
+      </Button>
+    </Wrapper>
   );
 };
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   .input_wrapper {
     margin-bottom: 20px;
     display: flex;

@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import MainPage from "./main/page";
 import { Storage } from "../utils/ChromeApi";
 import { JwtUtil } from "../utils/JwtUtil";
 import PopupLoadingPage from "./loading/page";
 import PopupLoginPage from "./login/page";
+import PopupMainPage from "./main/page";
+import FetchSelectPage from "./fetch/page";
+import FetchPage from "./fetch/[hosting]/page";
 
 const PopupRouter = () => {
   const navigate = useNavigate();
@@ -28,6 +30,9 @@ const PopupRouter = () => {
     <Routes>
       <Route path="/" element={<PopupLoadingPage />} />
       <Route path="/login" element={<PopupLoginPage />} />
+      <Route path="/main" element={<PopupMainPage />} />
+      <Route path="/patch" element={<FetchSelectPage />} />
+      <Route path="/patch/:hosting" element={<FetchPage />} />
     </Routes>
   );
 };

@@ -1,7 +1,46 @@
-import React from "react";
+import { Button } from "antd";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const MainPage = () => {
-  return <div>MainPage</div>;
+const PopupMainPage = () => {
+  const [user, setUser] = useState({
+    userName: "유니드컴즈_루가",
+    email: "luca.im@uneedcomms.com"
+  });
+
+  return (
+    <Wrapper>
+      <div className="user_info">
+        <div>
+          <strong>{user.userName}님</strong> 환영합니다.
+        </div>
+        <div>{user.email}</div>
+      </div>
+
+      <div className="button_wrapper">
+        <Button size="large" block disabled>
+          검수 시작하기
+        </Button>
+        <Button size="large" type="primary" block>
+          <Link to="/patch">패치 시작하기</Link>
+        </Button>
+      </div>
+    </Wrapper>
+  );
 };
 
-export default MainPage;
+const Wrapper = styled.section`
+  .user_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .button_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+
+export default PopupMainPage;
