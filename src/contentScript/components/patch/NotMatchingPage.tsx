@@ -1,14 +1,30 @@
 import { Button, Input } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import useInput from "../../../popup/utils/hooks/useInput";
+import { usePatchData } from "../../../popup/store/patchData";
 
-const NotMatchingPage = () => {
-  const { value, onChange } = useInput("");
+const NotMatchingPage = ({ step }: { step? }) => {
+  const { value, setValue, onChange } = useInput("");
 
   const onClick = () => {
+    usePatchData.saveProcessesNumber(Number(value) || 0);
+
+    if (step === 3) {
+      window.location.href = `https://oauth2-gateway.keepgrow.com/cms/setting/processes/${value}`;
+      return;
+    }
     window.location.href = `https://oauth2-gateway.keepgrow.com/cms/setting/processes/${value}/modify`;
   };
+
+  const getData = async () => {
+    const patchData = await usePatchData.getData();
+    if (!patchData) return;
+    setValue(patchData.processesNumber || "");
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <Wrapper>

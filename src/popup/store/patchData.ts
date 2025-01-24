@@ -6,7 +6,9 @@ export const STORAGE_PATCH_KEY = "kgPatchData";
 export class PatchData {
   hosting: "cafe24" | "imweb" | "makeshop";
   step: number;
+  processesNumber?: number;
   userInfo?: { id: string; password: string };
+  script?: string;
 
   constructor(patchData?: PatchData) {
     if (!patchData) {
@@ -14,7 +16,9 @@ export class PatchData {
     }
     this.hosting = patchData?.hosting;
     this.step = patchData?.step || 1;
+    this.processesNumber = patchData?.processesNumber;
     this.userInfo = patchData?.userInfo;
+    this.script = patchData?.script
   }
 }
 
@@ -75,11 +79,26 @@ usePatchData.updateStep = async (step, navigate?) => {
     navigate(`/patch/${data.hosting}/${step}`);
   }
 };
+usePatchData.saveProcessesNumber = async (processesNumber) => {
+  const data = await usePatchData.getData();
+  if (!data) return;
+
+  data.processesNumber = processesNumber;
+  Storage.SET(STORAGE_PATCH_KEY, JSON.stringify(data));
+};
 
 usePatchData.saveUserInfo = async ({ id, password }) => {
   const data = await usePatchData.getData();
   if (!data) return;
 
   data.userInfo = { id, password };
+  Storage.SET(STORAGE_PATCH_KEY, JSON.stringify(data));
+};
+
+usePatchData.saveScript = async (script) => {
+  const data = await usePatchData.getData();
+  if (!data) return;
+
+  data.script = script;
   Storage.SET(STORAGE_PATCH_KEY, JSON.stringify(data));
 };

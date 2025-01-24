@@ -90,7 +90,7 @@ const MatchingPage = () => {
         ))}
       </div>
       <div className="mt-2">
-        <TextArea id="copyMetaJson" autoSize={{ minRows: 10 }} value={textAreaValue} />
+        <TextArea autoSize={{ minRows: 10 }} value={textAreaValue} />
       </div>
       <div className="mt-2">
         <Button size="large" type="primary" block onClick={onClick}>
