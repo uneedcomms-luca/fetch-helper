@@ -5,8 +5,8 @@ import { JwtUtil } from "../utils/JwtUtil";
 import PopupLoadingPage from "./loading/page";
 import PopupLoginPage from "./login/page";
 import PopupMainPage from "./main/page";
-import FetchSelectPage from "./fetch/page";
-import FetchPage from "./fetch/[hosting]/page";
+import PatchSelectPage from "./patch/page";
+import PatchPage from "./patch/[hosting]/page";
 
 const PopupRouter = () => {
   const navigate = useNavigate();
@@ -31,8 +31,8 @@ const PopupRouter = () => {
       <Route path="/" element={<PopupLoadingPage />} />
       <Route path="/login" element={<PopupLoginPage />} />
       <Route path="/main" element={<PopupMainPage />} />
-      <Route path="/patch" element={<FetchSelectPage />} />
-      <Route path="/patch/:hosting" element={<FetchPage />} />
+      <Route path="/patch" element={<PatchSelectPage />} />
+      <Route path="/patch/:hosting" element={<PatchPage />} />
     </Routes>
   );
 };

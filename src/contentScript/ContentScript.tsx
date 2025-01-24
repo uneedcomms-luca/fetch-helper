@@ -3,12 +3,21 @@ import React from "react";
 import { Storage } from "../popup/utils/ChromeApi";
 import { createRoot } from "react-dom/client";
 import styled from "styled-components";
+import ContentScriptApp from "./app";
+import { usePatchData } from "../popup/store/patchData";
 
-const render = async () => {
-  // const container = document.createElement("div");
-  // document.body.appendChild(container);
-  // const root = createRoot(container);
-  // root.render(<App />);
+const checkRender = async () => {
+  const patchData = await usePatchData.getData();
+  if (!patchData) return;
+
+  render();
+};
+
+const render = () => {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
+  const root = createRoot(container);
+  root.render(<ContentScriptApp />);
 };
 
 // chrome.storage.onChanged.addListener((changes) => {
@@ -20,22 +29,4 @@ const render = async () => {
 //   }
 // });
 
-const App = () => {
-  return (
-    <Wrapper>
-      <h1>HI</h1>
-    </Wrapper>
-  );
-};
-
-const Wrapper = styled.div`
-  width: 300px;
-  height: 100vh;
-  background-color: aliceblue;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10000;
-`;
-
-render();
+checkRender();
