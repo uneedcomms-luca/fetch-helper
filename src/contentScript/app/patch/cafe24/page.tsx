@@ -5,6 +5,7 @@ import PatchStepHeader from "../../../components/patch/StepHeader";
 import Cafe24Step1 from "./step/1/page";
 import Cafe24Step2 from "./step/2/page";
 import Cafe24Step3 from "./step/3/page";
+import Cafe24Step4 from "./step/4/page";
 
 const PatchCafe24Page = () => {
   const params = useParams();
@@ -24,6 +25,7 @@ const PatchCafe24Page = () => {
       {step === 1 && <Cafe24Step1 />}
       {step === 2 && <Cafe24Step2 />}
       {step === 3 && <Cafe24Step3 />}
+      {step === 4 && <Cafe24Step4 />}
     </Wrapper>
   );
 };

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import useInput from "../../../../../../popup/utils/hooks/useInput";
 import TextArea from "antd/es/input/TextArea";
 import { usePatchData } from "../../../../../../popup/store/patchData";
+import { useNavigate } from "react-router-dom";
 
 const createContent = (src, dataEnv = false) =>
   `<!-- Uneedcomms Keepgrow Script -->
@@ -13,6 +14,7 @@ const createContent = (src, dataEnv = false) =>
 
 const MatchingPage3 = () => {
   const [src, setSrc] = useState("");
+  const navigate = useNavigate();
   const { value: dataEnvMobile, onChange } = useInput(false);
   const {
     value: textAreaValue,
@@ -37,6 +39,7 @@ const MatchingPage3 = () => {
 
   const onClick = () => {
     usePatchData.saveScript(textAreaValue);
+    usePatchData.updateStep(4, navigate);
   };
 
   return (

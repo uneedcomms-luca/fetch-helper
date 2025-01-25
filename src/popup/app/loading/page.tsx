@@ -3,7 +3,7 @@ import React from "react";
 
 const PopupLoadingPage = () => {
   return (
-    <section className="flex-box">
+    <section className="flex_box">
       <Spin size="large" />
     </section>
   );

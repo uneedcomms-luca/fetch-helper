@@ -9,6 +9,7 @@ export class PatchData {
   processesNumber?: number;
   userInfo?: { id: string; password: string };
   script?: string;
+  domain?: string;
 
   constructor(patchData?: PatchData) {
     if (!patchData) {
@@ -18,7 +19,8 @@ export class PatchData {
     this.step = patchData?.step || 1;
     this.processesNumber = patchData?.processesNumber;
     this.userInfo = patchData?.userInfo;
-    this.script = patchData?.script
+    this.script = patchData?.script;
+    this.domain = patchData?.domain;
   }
 }
 
@@ -59,6 +61,10 @@ export const usePatchData = () => {
     endPatch
   };
 };
+usePatchData.endPatch = () => {
+  Storage.DELETE(STORAGE_PATCH_KEY);
+  window.location.reload();
+};
 
 usePatchData.getData = async () => {
   try {
@@ -67,6 +73,13 @@ usePatchData.getData = async () => {
   } catch (e) {
     return;
   }
+};
+usePatchData.updateDomain = async (domain) => {
+  const data = await usePatchData.getData();
+  if (!data) return;
+
+  data.domain = domain;
+  Storage.SET(STORAGE_PATCH_KEY, JSON.stringify(data));
 };
 
 usePatchData.updateStep = async (step, navigate?) => {

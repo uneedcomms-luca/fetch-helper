@@ -15,7 +15,7 @@ body {
   height: 25px;
   margin: 20px 0 0 20px;
 }
-.button_wrapper {
+.flex_box {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,7 @@ section {
   background-color: var(--white);
   padding: 20px;
 }
-section.flex-box {
+section.flex_box {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -58,7 +58,7 @@ const MatchingPage = () => {
   const highlightFields = ["KGJS_logoName", "KGJS_accessKey", "KGJS_domain", "KGJS_response", "KGJS_uiHide"];
   const getLabelClass = (key) => (highlightFields.includes(key) ? "highlight input_label" : "input_label");
 
-  const onClick = () => {
+  const onClick = async () => {
     kgtextArea.value = textAreaValue;
     saveMetaJsonButton?.click();
     usePatchData.updateStep(2, navigate);
@@ -69,30 +69,38 @@ const MatchingPage = () => {
     if (value === "false") return false;
     return value;
   };
+  const onClickSaveDomain = async () => {
+    await usePatchData.updateDomain(inputFields["KGJS_domain"]);
+  };
 
   return (
     <Wrapper>
       <div className="input_wrapper top">
-        {Object.keys(inputFields).map((key) => (
-          <div key={key}>
-            <div className={getLabelClass(key)}>{key.replace("KGJS_", "")}</div>
-            {typeof inputFields[key] === "boolean" || inputFields[key] === "true" || inputFields[key] === "false" ? (
-              <Checkbox name={key} checked={checkCheckbox(inputFields[key])} onChange={handleChange} />
-            ) : (
-              <Input
-                name={key}
-                placeholder={key.replace("KGJS_", "")}
-                value={inputFields[key]}
-                onChange={handleChange}
-              />
-            )}
-          </div>
-        ))}
+        {Object.keys(inputFields).map((key) => {
+          return (
+            <div key={key}>
+              <div className={getLabelClass(key)}>{key.replace("KGJS_", "")}</div>
+              {typeof inputFields[key] === "boolean" || inputFields[key] === "true" || inputFields[key] === "false" ? (
+                <Checkbox name={key} checked={checkCheckbox(inputFields[key])} onChange={handleChange} />
+              ) : (
+                <Input
+                  name={key}
+                  placeholder={key.replace("KGJS_", "")}
+                  value={inputFields[key]}
+                  onChange={handleChange}
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
       <div className="mt-2">
         <TextArea autoSize={{ minRows: 10 }} value={textAreaValue} />
       </div>
-      <div className="mt-2">
+      <div className="mt-2 flex_box">
+        <Button size="large" color="gold" variant="solid" block onClick={onClickSaveDomain}>
+          도메인 저장
+        </Button>
         <Button size="large" type="primary" block onClick={onClick}>
           저장
         </Button>

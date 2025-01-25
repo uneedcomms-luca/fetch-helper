@@ -18,7 +18,7 @@ const PopupMainPage = () => {
         <div>{user.email}</div>
       </div>
 
-      <div className="button_wrapper mt-3">
+      <div className="flex_box mt-3">
         <Button size="large" block disabled>
           검수 시작하기
         </Button>
@@ -36,7 +36,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     gap: 10px;
   }
-  .button_wrapper {
+  .flex_box {
     display: flex;
     flex-direction: column;
     gap: 10px;

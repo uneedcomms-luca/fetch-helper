@@ -57,7 +57,7 @@ const MatchingPage2 = () => {
         <div>통합 JS 빌드를 차례로 눌러주세요</div>
       </div>
 
-      <div className="button_wrapper">
+      <div className="flex_box">
         <Button size="large" color="magenta" variant="solid" block onClick={onClickSaveAccount}>
           계정 저장
         </Button>
