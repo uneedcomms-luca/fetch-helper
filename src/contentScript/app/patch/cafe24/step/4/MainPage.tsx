@@ -5,8 +5,10 @@ import { Button } from "antd";
 
 const Cafe24MainPage = () => {
   const [domain, setDomain] = useState("");
+  const { getPatchData } = usePatchData();
+
   const getDomain = async () => {
-    const patchData = await usePatchData.getData();
+    const patchData = await getPatchData();
     if (patchData) {
       setDomain(patchData.domain || "");
     }

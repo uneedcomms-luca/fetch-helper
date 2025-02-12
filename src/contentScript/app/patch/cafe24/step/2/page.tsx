@@ -7,7 +7,7 @@ const Cafe24Step2 = () => {
 
   const [isMatchedPage, setIsMatchedPage] = useState(false);
 
-  const urlMatch = ["oauth2-gateway.keepgrow.com/cms/setting/processes", "modify"];
+  const urlMatch = ["gateway.keepgrow.com/cms/setting/processes", "modify"];
 
   useEffect(() => {
     setIsMatchedPage(urlMatch.every((url) => location.includes(url)));

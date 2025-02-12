@@ -5,9 +5,10 @@ import { Button } from "antd";
 
 const Cafe24LoginPage = () => {
   const [userInfo, setUserInfo] = useState({ id: "", password: "" });
+  const { getPatchData } = usePatchData();
 
   const getUserInfo = async () => {
-    const patchData = await usePatchData.getData();
+    const patchData = await getPatchData();
     if (patchData) {
       setUserInfo(patchData.userInfo);
     }

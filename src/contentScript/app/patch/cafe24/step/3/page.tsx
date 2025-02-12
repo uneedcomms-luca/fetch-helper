@@ -8,7 +8,7 @@ const Cafe24Step3 = () => {
 
   const [isMatchedPage, setIsMatchedPage] = useState(false);
 
-  const urlMatch = "oauth2-gateway.keepgrow.com/cms/setting/processes";
+  const urlMatch = "gateway.keepgrow.com/cms/setting/processes";
 
   const checkUrl = () => {
     if (location.includes(urlMatch)) {

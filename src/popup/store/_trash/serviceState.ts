@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { ServiceStateApi } from "../../api/serviceState";
+import { ServiceStateApi } from "../../../api/serviceState";
 
 export const ServiceStateStore = create<{
   loaded: boolean;

@@ -12,8 +12,9 @@ const Router = () => {
     route();
   }, []);
 
+  const { getPatchData } = usePatchData();
   const route = async () => {
-    const patchData = await usePatchData.getData();
+    const patchData = await getPatchData();
     if (patchData) {
       return navigate(`/patch/${patchData.hosting}/${Number(patchData.step || 1)}`);
     }

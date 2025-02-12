@@ -11,14 +11,16 @@ const NotMatchingPage = ({ step }: { step? }) => {
     usePatchData.saveProcessesNumber(Number(value) || 0);
 
     if (step === 3) {
-      window.location.href = `https://oauth2-gateway.keepgrow.com/cms/setting/processes/${value}`;
+      window.location.href = `https://gateway.keepgrow.com/cms/setting/processes/${value}`;
       return;
     }
-    window.location.href = `https://oauth2-gateway.keepgrow.com/cms/setting/processes/${value}/modify`;
+    window.location.href = `https://gateway.keepgrow.com/cms/setting/processes/${value}/modify`;
   };
 
+  const { getPatchData } = usePatchData();
+
   const getData = async () => {
-    const patchData = await usePatchData.getData();
+    const patchData = await getPatchData();
     if (!patchData) return;
     setValue(patchData.processesNumber || "");
   };

@@ -27,7 +27,7 @@ export class PatchData {
 export const usePatchData = () => {
   const [patchData, setPatchData] = useState<PatchData>();
 
-  const getData = async () => {
+  const init = async () => {
     const data = await Storage.GET(STORAGE_PATCH_KEY);
     if (!data) {
       return;
@@ -52,21 +52,23 @@ export const usePatchData = () => {
   };
 
   useEffect(() => {
-    getData();
+    init();
   }, []);
 
   return {
+    getPatchData,
     patchData,
     startPatch,
     endPatch
   };
 };
+
 usePatchData.endPatch = () => {
   Storage.DELETE(STORAGE_PATCH_KEY);
   window.location.reload();
 };
 
-usePatchData.getData = async () => {
+export const getPatchData = async () => {
   try {
     const data = await Storage.GET(STORAGE_PATCH_KEY);
     return JSON.parse(data);
@@ -75,7 +77,7 @@ usePatchData.getData = async () => {
   }
 };
 usePatchData.updateDomain = async (domain) => {
-  const data = await usePatchData.getData();
+  const data = await getPatchData();
   if (!data) return;
 
   data.domain = domain;
@@ -83,7 +85,7 @@ usePatchData.updateDomain = async (domain) => {
 };
 
 usePatchData.updateStep = async (step, navigate?) => {
-  const data = await usePatchData.getData();
+  const data = await getPatchData();
   if (!data) return;
 
   data.step = step;
@@ -93,7 +95,7 @@ usePatchData.updateStep = async (step, navigate?) => {
   }
 };
 usePatchData.saveProcessesNumber = async (processesNumber) => {
-  const data = await usePatchData.getData();
+  const data = await getPatchData();
   if (!data) return;
 
   data.processesNumber = processesNumber;
@@ -101,7 +103,7 @@ usePatchData.saveProcessesNumber = async (processesNumber) => {
 };
 
 usePatchData.saveUserInfo = async ({ id, password }) => {
-  const data = await usePatchData.getData();
+  const data = await getPatchData();
   if (!data) return;
 
   data.userInfo = { id, password };
@@ -109,7 +111,7 @@ usePatchData.saveUserInfo = async ({ id, password }) => {
 };
 
 usePatchData.saveScript = async (script) => {
-  const data = await usePatchData.getData();
+  const data = await getPatchData();
   if (!data) return;
 
   data.script = script;

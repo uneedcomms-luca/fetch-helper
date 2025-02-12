@@ -40,12 +40,14 @@ const Cafe24DesignPage = () => {
     }
   }, []);
 
-  const getPatchData = async () => {
-    const patchData = await usePatchData.getData();
+  const { getPatchData } = usePatchData();
+
+  const getData = async () => {
+    const patchData = await getPatchData();
     if (patchData) setPatchData(patchData);
   };
   useEffect(() => {
-    getPatchData();
+    getData();
   }, []);
 
   const onClickScriptCopy = () => {

@@ -1,13 +1,11 @@
 import React from "react";
 
-import { Storage } from "../popup/utils/ChromeApi";
 import { createRoot } from "react-dom/client";
-import styled from "styled-components";
 import ContentScriptApp from "./app";
-import { usePatchData } from "../popup/store/patchData";
+import { getPatchData } from "../popup/store/patchData";
 
 const checkRender = async () => {
-  const patchData = await usePatchData.getData();
+  const patchData = await getPatchData();
   if (!patchData) return;
 
   render();

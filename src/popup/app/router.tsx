@@ -15,6 +15,7 @@ const PopupRouter = () => {
   useEffect(() => {
     route();
   }, []);
+  const { getPatchData } = usePatchData();
 
   const route = async () => {
     // const jwtUtil = new JwtUtil();
@@ -25,7 +26,7 @@ const PopupRouter = () => {
 
     // if (jwtUtil.hasAgencyRole(accessToken)) {return navigate("/agency-main");}
 
-    const patchData = await usePatchData.getData();
+    const patchData = await getPatchData();
     if (patchData) {
       return navigate(`/patch/${patchData.hosting}`);
     }

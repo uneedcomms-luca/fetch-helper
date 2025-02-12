@@ -1,4 +1,4 @@
-import { ServiceState } from "../popup/store/serviceState";
+import { ServiceState } from "../popup/store/_trash/serviceState";
 import { Storage } from "../popup/utils/ChromeApi";
 import { fetchToBackground } from "./_setting";
 
