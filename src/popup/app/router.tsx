@@ -8,6 +8,7 @@ import PopupMainPage from "./main/page";
 import PatchSelectPage from "./patch/page";
 import PatchPage from "./patch/[hosting]/page";
 import { usePatchData } from "../store/patchData";
+import { AuthApi } from "../../api/auth";
 
 const PopupRouter = () => {
   const navigate = useNavigate();
@@ -18,13 +19,10 @@ const PopupRouter = () => {
   const { getPatchData } = usePatchData();
 
   const route = async () => {
-    // const jwtUtil = new JwtUtil();
-    // const accessToken = await Storage.GET("accessToken");
-    // if (!accessToken) {
-    //   return navigate("/login");
-    // }
-
-    // if (jwtUtil.hasAgencyRole(accessToken)) {return navigate("/agency-main");}
+    const isLogin = await AuthApi.getUserData();
+    if (!isLogin) {
+      return navigate("/login");
+    }
 
     const patchData = await getPatchData();
     if (patchData) {
