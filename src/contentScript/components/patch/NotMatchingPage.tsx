@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import useInput from "../../../popup/utils/hooks/useInput";
 import { usePatchData } from "../../../popup/store/patchData";
+import BottomLayout from "../layout/bottom";
 
 const NotMatchingPage = ({ step }: { step? }) => {
   const { value, setValue, onChange } = useInput("");
@@ -30,15 +31,29 @@ const NotMatchingPage = ({ step }: { step? }) => {
 
   return (
     <Wrapper>
-      <Input value={value} onChange={onChange} onPressEnter={onClick} placeholder="process 번호를 입력하세요" />
-      <Button size="large" type="primary" block onClick={onClick}>
-        이동
-      </Button>
+      <label>Process 번호를 입력해주세요.</label>
+
+      <Input
+        value={value}
+        onChange={onChange}
+        onPressEnter={onClick}
+        placeholder="process 번호를 입력해주세요"
+      />
+      <BottomLayout>
+        <Button size="large" type="primary" block onClick={onClick}>
+          이동
+        </Button>
+      </BottomLayout>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
   display: flex;
   flex-direction: column;
   gap: 10px;

@@ -15,11 +15,17 @@ const PatchStepHeader = ({ steps, step }: Props) => {
   };
   return (
     <Wrapper>
-      {step && <div className="step_now">{`${step}. ${steps[step - 1].title}`}</div>}
+      {step && (
+        <div className="step_now">{`${step}. ${steps[step - 1].title}`}</div>
+      )}
 
       <div className="step_wrapper">
         {steps.map((s) => (
-          <div key={s.step} onClick={() => onClick(s.step)} className={s.step === step ? "step active" : "step"}>
+          <div
+            key={s.step}
+            onClick={() => onClick(s.step)}
+            className={s.step === step ? "step active" : "step"}
+          >
             {s.step}
           </div>
         ))}
@@ -29,10 +35,13 @@ const PatchStepHeader = ({ steps, step }: Props) => {
 };
 
 const Wrapper = styled.div`
+  margin-bottom: 20px;
   .step_now {
-    padding: 10px 0;
+    margin: 10px 0;
     color: #333;
     font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 0.5px solid #f3f3f3;
   }
   .step_wrapper {
     display: flex;
@@ -56,7 +65,8 @@ const Wrapper = styled.div`
   }
 
   .active {
-    color: #333;
+    color: #ffffff;
+    background-color: #5a57f3;
     font-weight: bold;
   }
 `;

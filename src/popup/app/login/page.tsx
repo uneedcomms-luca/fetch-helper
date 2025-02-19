@@ -16,6 +16,12 @@ const PopupLoginPage = () => {
   const navigate = useNavigate();
   const onSubmit = async () => {
     setFeedback("");
+
+    if (!id.includes("uneedcomms")) {
+      setFeedback("유니드컴즈 직원만 로그인 가능합니다.");
+      return;
+    }
+
     const res = await AuthApi.login(id, password);
 
     // setIsInvalidPw(false);

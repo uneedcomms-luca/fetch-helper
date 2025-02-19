@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { Button } from "antd";
+import BottomLayout from "../../../../../components/layout/bottom";
 
 const Cafe24MainPage = () => {
   const [domain, setDomain] = useState("");
@@ -24,19 +25,34 @@ const Cafe24MainPage = () => {
 
   return (
     <Wrapper>
-      <div className="flex_box">
-        <div>디자인 페이지로 이동합니다</div>
-        <div> 도메인을 확인해주세요 </div>
-        <div>현재 도메인 : {domain}</div>
+      <div>
+        <div className="title">디자인 페이지로 이동합니다</div>
+        <div className="sub_title">
+          <div> 도메인을 확인해주세요 </div>
+          <div className="domain">{domain}</div>
+        </div>
       </div>
-      <div className="mt-3">
-        <Button size="large" color="geekblue" type="primary" block onClick={onClick}>
+      <BottomLayout>
+        <Button
+          size="large"
+          color="geekblue"
+          type="primary"
+          block
+          onClick={onClick}
+        >
           이동
         </Button>
-      </div>
+      </BottomLayout>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  .domain {
+    font-size: 20px;
+    color: #1890ff;
+    margin-top: 20px;
+    font-weight: 700;
+  }
+`;
 export default Cafe24MainPage;

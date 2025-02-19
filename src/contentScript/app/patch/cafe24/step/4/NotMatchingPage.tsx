@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 import styled from "styled-components";
+import BottomLayout from "../../../../../components/layout/bottom";
 
 const NotMatchingPage4 = () => {
   const onClick = () => {
@@ -8,9 +9,19 @@ const NotMatchingPage4 = () => {
   };
   return (
     <Wrapper>
-      <Button size="large" color="geekblue" type="primary" block onClick={onClick}>
-        로그인 페이지로 이동
-      </Button>
+      <div className="title">CAFE24 로 이동합니다.</div>
+      <div className="sub_title"></div>
+      <BottomLayout>
+        <Button
+          size="large"
+          color="geekblue"
+          type="primary"
+          block
+          onClick={onClick}
+        >
+          이동
+        </Button>
+      </BottomLayout>
     </Wrapper>
   );
 };

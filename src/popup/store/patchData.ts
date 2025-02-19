@@ -59,7 +59,7 @@ export const usePatchData = () => {
     getPatchData,
     patchData,
     startPatch,
-    endPatch
+    endPatch,
   };
 };
 
@@ -78,10 +78,12 @@ export const getPatchData = async () => {
 };
 usePatchData.updateDomain = async (domain) => {
   const data = await getPatchData();
-  if (!data) return;
+  if (!data) return false;
 
   data.domain = domain;
-  Storage.SET(STORAGE_PATCH_KEY, JSON.stringify(data));
+  const patchData = JSON.stringify(data);
+  await Storage.SET(STORAGE_PATCH_KEY, patchData);
+  return patchData;
 };
 
 usePatchData.updateStep = async (step, navigate?) => {

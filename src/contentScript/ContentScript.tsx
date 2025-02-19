@@ -1,30 +1,16 @@
-import React from "react";
-
-import { createRoot } from "react-dom/client";
-import ContentScriptApp from "./app";
 import { getPatchData } from "../popup/store/patchData";
+import { SidepanelService } from "./utils/sidepanel";
+import { AuthApi } from "../api/auth";
 
-const checkRender = async () => {
+const init = async () => {
+  const isLogin = await AuthApi.getUserData();
+  if (!isLogin) return;
+
   const patchData = await getPatchData();
+
   if (!patchData) return;
 
-  render();
+  document.body.appendChild(await SidepanelService.createPanel());
+  document.body.appendChild(SidepanelService.createtIcon());
 };
-
-const render = () => {
-  const container = document.createElement("div");
-  document.body.appendChild(container);
-  const root = createRoot(container);
-  root.render(<ContentScriptApp />);
-};
-
-// chrome.storage.onChanged.addListener((changes) => {
-//   if (changes.widgetState) {
-//     const newState = changes.widgetState.newValue;
-//     if (originState === newState) return;
-//     originState = newState;
-//     render();
-//   }
-// });
-
-checkRender();
+init();

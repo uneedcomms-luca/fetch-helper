@@ -37,11 +37,11 @@ const PopupMainPage = () => {
       </div>
 
       <div className="flex_box mt-3">
-        <Button size="large" block disabled>
-          검수 시작하기
-        </Button>
         <Button size="large" type="primary" block>
           <Link to="/patch">패치 시작하기</Link>
+        </Button>
+        <Button size="large" block disabled>
+          검수 시작하기
         </Button>
       </div>
     </Wrapper>

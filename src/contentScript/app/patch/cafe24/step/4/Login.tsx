@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { Button } from "antd";
+import BottomLayout from "../../../../../components/layout/bottom";
 
 const Cafe24LoginPage = () => {
   const [userInfo, setUserInfo] = useState({ id: "", password: "" });
@@ -28,27 +29,42 @@ const Cafe24LoginPage = () => {
     idElement.setAttribute("value", userInfo.id);
     pwElement.setAttribute("value", userInfo.password);
 
-    const loginButton = document.querySelector(".mButton > button") as HTMLButtonElement;
+    const loginButton = document.querySelector(
+      ".mButton > button"
+    ) as HTMLButtonElement;
     loginButton?.click();
   };
 
   return (
     <Wrapper>
       <div className="title">CAFE24 로그인</div>
-      <div>부운영자 로그인은 직접 로그인 해주세요</div>
-      <div className="mt-3 flex_box">
+      <div>*부운영자는 직접 로그인 해주세요</div>
+      <div className="login_box">
         <div>ID : {userInfo.id}</div>
         <div>PW : {userInfo.password}</div>
       </div>
-      <div className="mt-3">
-        <Button size="large" className="btnStrong" type="primary" block onClick={onClick}>
+      <BottomLayout>
+        <Button
+          size="large"
+          className="btnStrong"
+          type="primary"
+          block
+          onClick={onClick}
+        >
           로그인
         </Button>
-      </div>
+      </BottomLayout>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  .login_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+  }
+`;
 
 export default Cafe24LoginPage;

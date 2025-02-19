@@ -2,10 +2,10 @@ import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import PatchStepHeader from "../../../components/patch/StepHeader";
-import Cafe24Step1 from "./step/1/page";
-import Cafe24Step2 from "./step/2/page";
-import Cafe24Step3 from "./step/3/page";
-import Cafe24Step4 from "./step/4/page";
+import Cafe24Step1 from "./step/1/route";
+import Cafe24Step2 from "./step/2/route";
+import Cafe24Step3 from "./step/3/route";
+import Cafe24Step4 from "./step/4/route";
 
 const PatchCafe24Page = () => {
   const params = useParams();
@@ -15,7 +15,7 @@ const PatchCafe24Page = () => {
     { step: 1, title: "metaJson 수정" },
     { step: 2, title: "JS 파일 빌드" },
     { step: 3, title: "통합스크립트 내용 수정" },
-    { step: 4, title: "CAFE24 편집" }
+    { step: 4, title: "CAFE24 편집" },
   ];
 
   return (
@@ -35,6 +35,7 @@ const Wrapper = styled.section`
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #5a57f3;
   }
 `;
 
