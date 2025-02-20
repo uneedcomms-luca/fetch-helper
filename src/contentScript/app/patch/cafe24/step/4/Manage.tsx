@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cafe24ManagePage = () => {
   const onClickButton = (num) => {
-    const buttons = document.querySelectorAll(
-      "#main_design_card_edit_button"
-    ) as NodeListOf<HTMLButtonElement>;
+    const buttons = document.querySelectorAll("#main_design_card_edit_button") as NodeListOf<HTMLButtonElement>;
     try {
       buttons[num]?.click();
     } catch (e) {
@@ -22,6 +20,7 @@ const Cafe24ManagePage = () => {
   const onClickNewPatch = () => {
     usePatchData.updateStep(1, navigate);
     usePatchData.endPatch();
+    window.location.href = "https://gateway.keepgrow.com/cms/main";
   };
   const onClickEnd = () => {
     usePatchData.endPatch();
@@ -29,44 +28,21 @@ const Cafe24ManagePage = () => {
 
   return (
     <Wrapper>
-      <div className="title">
-        PC , 모바일 환경 세팅을 시작합니다. 패치를 마쳤다면 완료를 눌러주세요.
-      </div>
+      <div className="title">PC , 모바일 환경 세팅을 시작합니다. 패치를 마쳤다면 완료를 눌러주세요.</div>
       <div className="button_box mt-3">
-        <Button
-          color="geekblue"
-          type="primary"
-          onClick={() => onClickButton(0)}
-        >
+        <Button color="geekblue" type="primary" onClick={() => onClickButton(0)}>
           PC 편집
         </Button>
-        <Button
-          color="geekblue"
-          type="primary"
-          onClick={() => onClickButton(1)}
-        >
+        <Button color="geekblue" type="primary" onClick={() => onClickButton(1)}>
           MOBILE 편집
         </Button>
       </div>
 
       <BottomLayout>
-        <Button
-          color="danger"
-          type="primary"
-          size="large"
-          block
-          onClick={onClickNewPatch}
-        >
+        <Button color="danger" type="primary" size="large" block onClick={onClickNewPatch}>
           새 패치 시작
         </Button>
-        <Button
-          color="danger"
-          type="primary"
-          size="large"
-          block
-          onClick={onClickEnd}
-          className="button_warning"
-        >
+        <Button color="danger" type="primary" size="large" block onClick={onClickEnd} className="button_warning">
           패치 종료
         </Button>
       </BottomLayout>
