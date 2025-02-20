@@ -12,12 +12,10 @@ const MatchingPage = () => {
   const [inputFields, setInputFields] = useState({});
 
   const [textAreaValue, setTextAreaValue] = useState("");
-  const kgtextArea = document.querySelector(
-    "#copyMetaJson"
-  ) as HTMLTextAreaElement;
-  const saveMetaJsonButton = document.querySelector(
-    "#meta-json-patch"
-  ) as HTMLButtonElement;
+  const kgtextArea = document.querySelector("#copyMetaJson") as HTMLTextAreaElement;
+  const saveMetaJsonButton = document.querySelector("#meta-json-patch") as HTMLButtonElement;
+
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (!kgtextArea) return;
@@ -36,20 +34,34 @@ const MatchingPage = () => {
     const { name, value, type, checked } = e.target;
     setInputFields((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : value
     }));
   };
   const formattedJsonString = (rawData) => {
     let jsonString = rawData
-      .replace(/=/g, ":")
-      .replace(/([{,]\s*)([A-Za-z0-9_]+)(\s*:)/g, '$1"$2"$3')
-      .replace(/:\s*([a-zA-Z0-9.+-]+)/g, ': "$1"')
-      .replace(/:\s*(,|\})/g, ': ""$1');
+      .replace(/^{|}$/g, "")
+      .split(", ")
+      .map((pair) => {
+        let [key, value] = pair.split("=");
+        key = `"${key.trim()}"`;
+
+        if (!value) {
+          value = `""`;
+        } else if (!isNaN(value) && !value.includes(".")) {
+        } else {
+          value = `"${value.trim()}"`;
+        }
+
+        return `${key}: ${value}`;
+      })
+      .join(", ");
+    jsonString = `{ ${jsonString} }`;
 
     try {
       return JSON.parse(jsonString);
     } catch (error) {
       console.error("❌ JSON 변환 오류:", error);
+      setIsError(true);
       return null;
     }
   };
@@ -61,15 +73,8 @@ const MatchingPage = () => {
       .replace(/"/g, ""); // 큰따옴표 제거
   };
 
-  const highlightFields = [
-    "KGJS_logoName",
-    "KGJS_accessKey",
-    "KGJS_domain",
-    "KGJS_response",
-    "KGJS_uiHide",
-  ];
-  const getLabelClass = (key) =>
-    highlightFields.includes(key) ? "highlight input_label" : "input_label";
+  const highlightFields = ["KGJS_logoName", "KGJS_accessKey", "KGJS_domain", "KGJS_response", "KGJS_uiHide"];
+  const getLabelClass = (key) => (highlightFields.includes(key) ? "highlight input_label" : "input_label");
 
   const onClick = async () => {
     await usePatchData.updateDomain(inputFields["KGJS_domain"]);
@@ -89,6 +94,10 @@ const MatchingPage = () => {
     return value;
   };
 
+  if (isError) {
+    return <Alert message="JSON 형식이 잘못되었습니다." type="error" />;
+  }
+  
   return (
     <Wrapper>
       <div className="input_wrapper top">
@@ -99,14 +108,8 @@ const MatchingPage = () => {
                 {key.replace("KGJS_", "")}
                 {key === "KGJS_uiHide" && <span>← check ❌</span>}
               </div>
-              {typeof inputFields[key] === "boolean" ||
-              inputFields[key] === "true" ||
-              inputFields[key] === "false" ? (
-                <Checkbox
-                  name={key}
-                  checked={checkCheckbox(inputFields[key])}
-                  onChange={handleChange}
-                />
+              {typeof inputFields[key] === "boolean" || inputFields[key] === "true" || inputFields[key] === "false" ? (
+                <Checkbox name={key} checked={checkCheckbox(inputFields[key])} onChange={handleChange} />
               ) : (
                 <Input
                   name={key}

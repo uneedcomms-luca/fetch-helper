@@ -46,6 +46,7 @@ const MatchingPage3 = () => {
 
     setTimeout(() => {
       usePatchData.updateStep(4, navigate);
+      window.location.href = "https://eclogin.cafe24.com/Shop/";
     }, 1000);
   };
 

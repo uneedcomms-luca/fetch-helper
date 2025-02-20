@@ -79,7 +79,10 @@ const Wrapper = styled.section`
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+    input {
+      font-size: 13px;
+    }
   }
   .feedback {
     color: red;

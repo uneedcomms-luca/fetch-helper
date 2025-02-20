@@ -9,9 +9,9 @@ import { SidepanelService } from "../utils/sidepanel";
 const ContentScriptApp = () => {
   return (
     <div className="kg-sidepanel">
-      <div className="kg-close-button" onClick={SidepanelService.togglePanel}>
+      {/* <div className="kg-close-button" onClick={() => SidepanelService.togglePanel()}>
         𝘅
-      </div>
+      </div> */}
       <div className="kg-sidepanel-content">
         <MemoryRouter initialEntries={["/"]}>
           <Router />
