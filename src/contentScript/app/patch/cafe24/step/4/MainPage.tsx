@@ -27,19 +27,9 @@ const Cafe24MainPage = () => {
     <Wrapper>
       <div>
         <div className="title">디자인 페이지로 이동합니다</div>
-        <div className="sub_title">
-          <div> 도메인을 확인해주세요 </div>
-          <div className="domain">{domain}</div>
-        </div>
       </div>
       <BottomLayout>
-        <Button
-          size="large"
-          color="geekblue"
-          type="primary"
-          block
-          onClick={onClick}
-        >
+        <Button size="large" color="geekblue" type="primary" block onClick={onClick}>
           이동
         </Button>
       </BottomLayout>

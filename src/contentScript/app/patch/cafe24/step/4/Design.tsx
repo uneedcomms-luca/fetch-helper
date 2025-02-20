@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import UrlCheckList from "../../../../../components/patch/UrlCheckList";
-import {
-  PatchData,
-  usePatchData,
-} from "../../../../../../popup/store/patchData";
+import { PatchData, usePatchData } from "../../../../../../popup/store/patchData";
 import { mappingPageScript } from "../../../../../utils/patch/script";
 import { Button, message } from "antd";
 import BottomLayout from "../../../../../components/layout/bottom";
@@ -14,24 +11,15 @@ const Cafe24DesignPage = () => {
 
   const [env, setEnv] = useState<"pc" | "mobile">("pc");
   const [patchData, setPatchData] = useState<PatchData>();
-  const checkList = {
-    pc: [
-      "메인 (main.html)",
-      "주문 완료 (order/result.html)",
-      "로그인 (member/login.html)",
-      "회원가입 (member/join.html)",
-      "계정 연동 (member/connect.html)",
-    ],
-    mobile: [
-      "메인 (main.html)",
-      "상품 상세 (detail.html)",
-      "주문 완료 (order/result.html)",
-      "장바구니 (order/basket.html)",
-      "로그인 (member/login.html)",
-      "회원가입 (member/join.html)",
-      "계정 연동 (member/connect.html)",
-    ],
-  };
+  const checkList = [
+    "메인 (main.html)",
+    "주문 완료 (order/result.html)",
+    "로그인 (member/login.html)",
+    "회원가입 (member/join.html)",
+    "계정 연동 (member/connect.html)",
+    "[M]상품 상세 (detail.html)",
+    "[M]장바구니 (order/basket.html)"
+  ];
   useEffect(() => {
     if (location.includes("/disp/admin/editor/main")) {
       setEnv("pc");
@@ -56,13 +44,13 @@ const Cafe24DesignPage = () => {
 
   const onClickScriptCopy = () => {
     if (!patchData) return;
-    message.success("복사되었습니다.");
+    message.success("통합 스크립트 복사");
     navigator.clipboard.writeText(patchData.script);
   };
-  const onClickMappingSciprtCopy = () => {
+  const onClickMappingSciprtCopy = (_env: "mobile" | "pc") => {
     if (!patchData) return;
-    message.success("복사되었습니다.");
-    navigator.clipboard.writeText(mappingPageScript[env]);
+    message.success(`${_env}스크립트 복사`);
+    navigator.clipboard.writeText(mappingPageScript[_env]);
   };
 
   const onClick = () => {
@@ -77,22 +65,23 @@ const Cafe24DesignPage = () => {
   return (
     <Wrapper>
       <div className="flex_box">
-        <div className="title">
-          <div>
-            {env.toUpperCase()} 환경입니다. 통합스크립트를 {`<body>`} 최상단에
-            주입하고,{" "}
-          </div>
-          <div>아래의 리스트를 통해 확인하세요.</div>
+        <div className="">
+          <strong>{env.toUpperCase()}</strong> 환경입니다. <br />
+          통합스크립트를 {`<body>`} 최상단에 주입하고 <br />
+          아래의 리스트를 통해 확인하세요.
         </div>
         <div className="mt-2">
-          <UrlCheckList checkList={checkList[env]} />
+          <UrlCheckList checkList={checkList} />
         </div>
         <div className="copy_box">
           <Button type="dashed" onClick={onClickScriptCopy}>
             통합 스크립트 📃
           </Button>
-          <Button type="dashed" onClick={onClickMappingSciprtCopy}>
-            계정연동 페이지 스크립트 📃
+          <Button type="dashed" onClick={() => onClickMappingSciprtCopy("pc")}>
+            PC - 계정연동 페이지 스크립트 📃
+          </Button>
+          <Button type="dashed" onClick={() => onClickMappingSciprtCopy("mobile")}>
+            MOBILE - 계정연동 페이지 스크립트 📃
           </Button>
         </div>
       </div>

@@ -67,10 +67,16 @@ const MatchingPage = () => {
   };
 
   const convertToRawFormat = (data) => {
-    return JSON.stringify(data)
-      .replace(/:/g, "=") // 콜론을 '='로 변경
+    // return JSON.stringify(data)
+    //   .replace(/:/g, "=") // 콜론을 '='로 변경
+    //   .replace(/,/g, ", ") // 콤마를 ', '으로 변경
+    //   .replace(/"/g, ""); // 큰따옴표 제거
+    return JSON.stringify(data) // JSON을 문자열로 변환
+      .replace(/"https?:\/\/[^"]+"/g, (match) => match.replace(/:/g, "%COLON%")) // URL 보호
+      .replace(/:/g, "=") // 일반 콜론을 '='로 변경
       .replace(/,/g, ", ") // 콤마를 ', '으로 변경
-      .replace(/"/g, ""); // 큰따옴표 제거
+      .replace(/"/g, "") // 큰따옴표 제거
+      .replace(/%COLON%/g, ":"); // URL의 원래 콜론 복원
   };
 
   const highlightFields = ["KGJS_logoName", "KGJS_accessKey", "KGJS_domain", "KGJS_response", "KGJS_uiHide"];
@@ -97,7 +103,7 @@ const MatchingPage = () => {
   if (isError) {
     return <Alert message="JSON 형식이 잘못되었습니다." type="error" />;
   }
-  
+
   return (
     <Wrapper>
       <div className="input_wrapper top">
