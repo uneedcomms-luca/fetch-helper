@@ -12,10 +12,10 @@ const NotMatchingPage = ({ step }: { step? }) => {
     usePatchData.saveProcessesNumber(Number(value) || 0);
 
     if (step === 3) {
-      window.location.href = `https://gateway.keepgrow.com/cms/setting/processes/${value}`;
+      window.open(`https://gateway.keepgrow.com/cms/setting/processes/${value}`);
       return;
     }
-    window.location.href = `https://gateway.keepgrow.com/cms/setting/processes/${value}/modify`;
+    window.open(`https://gateway.keepgrow.com/cms/setting/processes/${value}/modify`);
   };
 
   const { getPatchData } = usePatchData();
@@ -33,12 +33,7 @@ const NotMatchingPage = ({ step }: { step? }) => {
     <Wrapper>
       <label>Process 번호를 입력해주세요.</label>
 
-      <Input
-        value={value}
-        onChange={onChange}
-        onPressEnter={onClick}
-        placeholder="process 번호를 입력해주세요"
-      />
+      <Input value={value} onChange={onChange} onPressEnter={onClick} placeholder="process 번호를 입력해주세요" />
       <BottomLayout>
         <Button size="large" type="primary" block onClick={onClick}>
           이동
