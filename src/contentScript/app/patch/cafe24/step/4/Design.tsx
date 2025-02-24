@@ -16,7 +16,8 @@ const Cafe24DesignPage = () => {
     "주문 완료 (order/result.html)",
     "로그인 (member/login.html)",
     "회원가입 (member/join.html)",
-    "계정 연동 (member/connect.html)",
+    "주문서 작성 (order/orderform.html)",
+    "계정 연동 (member/mapping_login.html)",
     "[M]상품 상세 (detail.html)",
     "[M]장바구니 (order/basket.html)"
   ];
