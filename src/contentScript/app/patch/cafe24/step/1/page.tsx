@@ -9,7 +9,7 @@ import Alert from "antd/es/alert/Alert";
 
 const MatchingPage = () => {
   const navigate = useNavigate();
-  const [inputFields, setInputFields] = useState({});
+  const [inputFields, setInputFields] = useState({ KGJS_responsive: "" });
 
   const [textAreaValue, setTextAreaValue] = useState("");
   const kgtextArea = document.querySelector("#copyMetaJson") as HTMLTextAreaElement;
