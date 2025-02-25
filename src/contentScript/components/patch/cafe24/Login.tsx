@@ -40,8 +40,8 @@ const Cafe24LoginPage = () => {
       <div className="title">CAFE24 로그인</div>
       <div>*부운영자는 직접 로그인 해주세요</div>
       <div className="login_box">
-        <div>ID : {userInfo.id}</div>
-        <div>PW : {userInfo.password}</div>
+        <div>ID : {userInfo?.id}</div>
+        <div>PW : {userInfo?.password}</div>
       </div>
       <BottomLayout>
         <Button

@@ -36,9 +36,13 @@ const NoteModal = ({ setOpen }: Props) => {
 
   return (
     <Wrapper onClick={(e) => e.target === e.currentTarget && setOpen(false)}>
-      <div className="note_content">
-        <TextArea value={content} onChange={(e) => onChange(e)} style={{ height: "100%" }} />
-      </div>
+      <TextArea
+        className="note_content"
+        autoSize={{ minRows: 10 }}
+        value={content}
+        onChange={(e) => onChange(e)}
+        style={{ height: "100%" }}
+      />
     </Wrapper>
   );
 };
@@ -49,7 +53,7 @@ const Wrapper = styled.div`
   height: 90vh;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(164, 164, 164, 0.5);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -61,7 +65,7 @@ const Wrapper = styled.div`
     width: 200px;
     height: 300px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 3px;
   }
 `;
 

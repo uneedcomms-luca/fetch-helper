@@ -6,14 +6,7 @@ import TextArea from "antd/es/input/TextArea";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { useNavigate } from "react-router-dom";
 import BottomLayout from "../../../../../components/layout/bottom";
-
-const createContent = (src, dataEnv = false) =>
-  `<!-- Uneedcomms Keepgrow Script -->
-<div module="member_login" style="display:none !important"></div>
-<script id="kg-service-init" data-hosting="cafe24" src="${src}" ${
-    dataEnv ? 'data-env="mobile"' : ""
-  }></script>
-<!-- Uneedcomms Keepgrow Script -->`;
+import { scriptContent } from "../../../../../utils/patch/script";
 
 const UpdateScriptPage = () => {
   const [src, setSrc] = useState("");
@@ -22,8 +15,8 @@ const UpdateScriptPage = () => {
   const {
     value: textAreaValue,
     setValue: setTextAreaValue,
-    onChange: onChangeTextValue,
-  } = useInput(createContent(src, dataEnvMobile));
+    onChange: onChangeTextValue
+  } = useInput(scriptContent["CAFE24"](src, dataEnvMobile));
 
   const getUrl = () => {
     const element = document.querySelector("#integratedScript");
@@ -37,7 +30,7 @@ const UpdateScriptPage = () => {
   }, []);
 
   useEffect(() => {
-    setTextAreaValue(createContent(src, dataEnvMobile));
+    setTextAreaValue(scriptContent["CAFE24"](src, dataEnvMobile));
   }, [src, dataEnvMobile]);
 
   const onClick = () => {
@@ -57,20 +50,14 @@ const UpdateScriptPage = () => {
           data-env <Checkbox checked={dataEnvMobile} onChange={onChange} />
         </div>
         <div className="input_desc mt-2">
-          시크릿모드 - PC, 모바일 - 회원가입 페이지 agreement.html 경우에만 해당
-          - 사용 여부 확인
+          시크릿모드 - PC, 모바일 - 회원가입 페이지 agreement.html 경우에만 해당 - 사용 여부 확인
         </div>
         <div className="input_desc">data-env="mobile" 삽입</div>
       </div>
 
       <div className="mt-4">
         <div className="input_label">통합 JS - CAFE24</div>
-        <TextArea
-          autoSize={{ minRows: 10 }}
-          size="small"
-          onChange={onChangeTextValue}
-          value={textAreaValue}
-        />
+        <TextArea autoSize={{ minRows: 10 }} size="small" onChange={onChangeTextValue} value={textAreaValue} />
       </div>
 
       <BottomLayout>
