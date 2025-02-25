@@ -35,10 +35,10 @@ const PatchCafe24Page = () => {
 
 const Wrapper = styled.section`
   .title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #5a57f3;
+    color: #333;
   }
 `;
 

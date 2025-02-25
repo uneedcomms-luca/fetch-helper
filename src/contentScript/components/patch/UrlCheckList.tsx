@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const UrlCheckList = ({ checkList }: { checkList: string[] }) => {
-  const [checkedList, setCheckedList] = useState<
-    { content: string; done: boolean }[]
-  >([]);
+  const [checkedList, setCheckedList] = useState<{ content: string; done: boolean }[]>([]);
 
   useEffect(() => {
     setCheckedList(
@@ -27,11 +25,7 @@ const UrlCheckList = ({ checkList }: { checkList: string[] }) => {
     <Wrapper>
       {checkedList.map((item, index) => {
         return (
-          <div
-            onClick={() => onClick(index)}
-            key={index}
-            className={item.done ? "checkitem done" : "checkitem"}
-          >
+          <div onClick={() => onClick(index)} key={index} className={item.done ? "checkitem done" : "checkitem"}>
             {item.content}
           </div>
         );
@@ -46,10 +40,10 @@ const Wrapper = styled.div`
   border-radius: 5px;
   padding: 20px 0;
   .checkitem {
-    color: var(--blue);
+    color: #333;
     width: 100%;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 8px;
     padding: 10px 20px;
     cursor: pointer;

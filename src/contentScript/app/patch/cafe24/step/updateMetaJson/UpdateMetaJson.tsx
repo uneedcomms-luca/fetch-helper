@@ -79,12 +79,12 @@ const UpdateMetaJsonPage = () => {
   const getLabelClass = (key) => (highlightFields.includes(key) ? "highlight input_label" : "input_label");
 
   const onClick = async () => {
-    await usePatchData.updateDomain(inputFields["KGJS_domain"]);
+    // await usePatchData.updateDomain(inputFields["KGJS_domain"]);
 
-    message.success(`도메인이 저장되었습니다.${inputFields["KGJS_domain"]}`, 1);
+    message.success(`MetaJson이 저장되었습니다.`);
+    kgtextArea.value = textAreaValue;
 
     setTimeout(() => {
-      kgtextArea.value = textAreaValue;
       saveMetaJsonButton?.click();
       usePatchData.updateStep(3, navigate);
     }, 1000);
