@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MatchingPage from "./page";
+import MatchingPage from "./UpdateMetaJson";
 import NotMatchingPage from "../../../../../components/patch/NotMatchingPage";
 
-const Cafe24Step1 = () => {
+const UpdateMetaJson = () => {
   const location = window.location.href;
 
   const [isMatchedPage, setIsMatchedPage] = useState(false);
@@ -16,4 +16,4 @@ const Cafe24Step1 = () => {
   return <>{isMatchedPage ? <MatchingPage /> : <NotMatchingPage />}</>;
 };
 
-export default Cafe24Step1;
+export default UpdateMetaJson;

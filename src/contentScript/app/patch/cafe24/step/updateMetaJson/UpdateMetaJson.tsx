@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import BottomLayout from "../../../../../components/layout/bottom";
 import Alert from "antd/es/alert/Alert";
 
-const MatchingPage = () => {
+const UpdateMetaJsonPage = () => {
   const navigate = useNavigate();
   const [inputFields, setInputFields] = useState({ KGJS_responsive: "" });
 
@@ -176,4 +176,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default MatchingPage;
+export default UpdateMetaJsonPage;

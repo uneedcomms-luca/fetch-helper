@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MatchingPage2 from "./page";
+import MatchingPage2 from "./BuildScript";
 import NotMatchingPage from "../../../../../components/patch/NotMatchingPage";
 
-const Cafe24Step2 = () => {
+const BuildScript = () => {
   const location = window.location.href;
 
   const [isMatchedPage, setIsMatchedPage] = useState(false);
@@ -16,4 +16,4 @@ const Cafe24Step2 = () => {
   return <>{isMatchedPage ? <MatchingPage2 /> : <NotMatchingPage />}</>;
 };
 
-export default Cafe24Step2;
+export default BuildScript;

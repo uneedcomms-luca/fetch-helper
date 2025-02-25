@@ -5,7 +5,7 @@ import NotMatchingPage4 from "./NotMatchingPage";
 import Cafe24ManagePage from "./Manage";
 import Cafe24DesignPage from "./Design";
 
-const Cafe24Step4 = () => {
+const InjectScript = () => {
   const location = window.location.href;
 
   const [page, setPage] = useState<"login" | "cafe24-main" | "cafe24-manage" | "cafe24-design" | "na">("na");
@@ -48,4 +48,4 @@ const Cafe24Step4 = () => {
   );
 };
 
-export default Cafe24Step4;
+export default InjectScript;

@@ -8,7 +8,7 @@ import BottomLayout from "../../../../../components/layout/bottom";
 const CAFE24_ID = "CAFE24_ACCOUNT_SHOP_ID";
 const CAFE24_PW = "CAFE24_ACCOUNT_PASSWORD";
 
-const MatchingPage2 = () => {
+const BuildScriptPage = () => {
   const navigate = useNavigate();
   const onClickSaveAccount = async () => {
     const userInfo = { id: "", password: "" };
@@ -103,4 +103,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default MatchingPage2;
+export default BuildScriptPage;
