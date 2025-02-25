@@ -67,10 +67,6 @@ const UpdateMetaJsonPage = () => {
   };
 
   const convertToRawFormat = (data) => {
-    // return JSON.stringify(data)
-    //   .replace(/:/g, "=") // 콜론을 '='로 변경
-    //   .replace(/,/g, ", ") // 콤마를 ', '으로 변경
-    //   .replace(/"/g, ""); // 큰따옴표 제거
     return JSON.stringify(data) // JSON을 문자열로 변환
       .replace(/"https?:\/\/[^"]+"/g, (match) => match.replace(/:/g, "%COLON%")) // URL 보호
       .replace(/:/g, "=") // 일반 콜론을 '='로 변경
@@ -90,7 +86,7 @@ const UpdateMetaJsonPage = () => {
     setTimeout(() => {
       kgtextArea.value = textAreaValue;
       saveMetaJsonButton?.click();
-      usePatchData.updateStep(2, navigate);
+      usePatchData.updateStep(3, navigate);
     }, 1000);
   };
 

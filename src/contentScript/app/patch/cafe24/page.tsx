@@ -1,34 +1,34 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import PatchStepHeader from "../../../components/patch/StepHeader";
 import UpdateMetaJson from "./step/updateMetaJson/route";
-import Cafe24Step2 from "./step/buildScript/route";
-import Cafe24Step3 from "./step/updateScript/route";
-import Cafe24Step4 from "./step/injectScript/route";
 import BuildScript from "./step/buildScript/route";
 import UpdateScript from "./step/updateScript/route";
 import InjectScript from "./step/injectScript/route";
+import CheckHosting from "./step/checkHosting/route";
 
 const PatchCafe24Page = () => {
   const params = useParams();
   const step = Number(params.step);
 
   const steps = [
-    { step: 1, title: "metaJson 수정" },
-    { step: 2, title: "JS 파일 빌드" },
-    { step: 3, title: "통합스크립트 내용 수정" },
-    { step: 4, title: "CAFE24 편집" }
+    { step: 1, title: "CAFE24 확인" },
+    { step: 2, title: "metaJson 수정" },
+    { step: 3, title: "JS 파일 빌드" },
+    { step: 4, title: "통합스크립트 내용 수정" },
+    { step: 5, title: "CAFE24 편집" }
   ];
 
   return (
     <Wrapper>
       <div className="title">CAFE24</div>
       <PatchStepHeader steps={steps} step={step} />
-      {step === 1 && <UpdateMetaJson />}
-      {step === 2 && <BuildScript />}
-      {step === 3 && <UpdateScript />}
-      {step === 4 && <InjectScript />}
+      {step === 1 && <CheckHosting />}
+      {step === 2 && <UpdateMetaJson />}
+      {step === 3 && <BuildScript />}
+      {step === 4 && <UpdateScript />}
+      {step === 5 && <InjectScript />}
     </Wrapper>
   );
 };

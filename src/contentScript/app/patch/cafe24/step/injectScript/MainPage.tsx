@@ -26,7 +26,7 @@ const Cafe24MainPage = () => {
   return (
     <Wrapper>
       <div>
-        <div className="title">디자인 페이지로 이동합니다</div>
+        <div className="sub_title">디자인 페이지로 이동합니다</div>
       </div>
       <BottomLayout>
         <Button size="large" color="geekblue" type="primary" block onClick={onClick}>

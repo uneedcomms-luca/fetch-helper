@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { usePatchData } from "../../../popup/store/patchData";
+import NoteModal from "../NoteModal";
 
 interface Props {
   steps: { step: number; title: string }[];
@@ -13,10 +14,18 @@ const PatchStepHeader = ({ steps, step }: Props) => {
   const onClick = (step: number) => {
     usePatchData.updateStep(step, navigate);
   };
+
+  const [openNote, setOpenNote] = useState(false);
+
   return (
     <Wrapper>
-      {step && <div className="step_now">{`${step}. ${steps[step - 1].title}`}</div>}
+      <div className="header_flex_box">
+        {step && <div className="step_now">{`${step}. ${steps[step - 1].title}`}</div>}
 
+        <div className="kg_note" onClick={() => setOpenNote(true)}>
+          📝
+        </div>
+      </div>
       <div className="step_wrapper">
         {steps.map((s) => (
           <div key={s.step} onClick={() => onClick(s.step)} className={s.step === step ? "step active" : "step"}>
@@ -24,18 +33,28 @@ const PatchStepHeader = ({ steps, step }: Props) => {
           </div>
         ))}
       </div>
+      {openNote && <NoteModal setOpen={setOpenNote} />}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
-  .step_now {
-    margin: 10px 0;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border-bottom: 0.5px solid #f3f3f3;
+  .header_flex_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .kg_note {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .step_now {
+      margin: 10px 0;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
   }
   .step_wrapper {
     display: flex;

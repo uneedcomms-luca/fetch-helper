@@ -45,7 +45,7 @@ const UpdateScriptPage = () => {
     message.success("스크립트가 저장되었습니다.");
 
     setTimeout(() => {
-      usePatchData.updateStep(4, navigate);
+      usePatchData.updateStep(5, navigate);
       window.location.href = "https://eclogin.cafe24.com/Shop/";
     }, 1000);
   };

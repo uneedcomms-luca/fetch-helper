@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MatchingPage from "./UpdateMetaJson";
+import UpdateMetaJsonPage from "./UpdateMetaJson";
 import NotMatchingPage from "../../../../../components/patch/NotMatchingPage";
 
 const UpdateMetaJson = () => {
@@ -13,7 +13,7 @@ const UpdateMetaJson = () => {
     setIsMatchedPage(urlMatch.every((url) => location.includes(url)));
   }, []);
 
-  return <>{isMatchedPage ? <MatchingPage /> : <NotMatchingPage />}</>;
+  return <>{isMatchedPage ? <UpdateMetaJsonPage /> : <NotMatchingPage />}</>;
 };
 
 export default UpdateMetaJson;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MatchingPage2 from "./BuildScript";
+import BuildScriptPage from "./BuildScript";
 import NotMatchingPage from "../../../../../components/patch/NotMatchingPage";
 
 const BuildScript = () => {
@@ -13,7 +13,7 @@ const BuildScript = () => {
     setIsMatchedPage(urlMatch.every((url) => location.includes(url)));
   }, []);
 
-  return <>{isMatchedPage ? <MatchingPage2 /> : <NotMatchingPage />}</>;
+  return <>{isMatchedPage ? <BuildScriptPage /> : <NotMatchingPage />}</>;
 };
 
 export default BuildScript;
