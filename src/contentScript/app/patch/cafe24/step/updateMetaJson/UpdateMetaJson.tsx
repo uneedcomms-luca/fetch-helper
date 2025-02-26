@@ -9,7 +9,7 @@ import Alert from "antd/es/alert/Alert";
 
 const UpdateMetaJsonPage = () => {
   const navigate = useNavigate();
-  const [inputFields, setInputFields] = useState({ KGJS_responsive: "" });
+  const [inputFields, setInputFields] = useState({ KGJS_responsive: false });
 
   const [textAreaValue, setTextAreaValue] = useState("");
   const kgtextArea = document.querySelector("#copyMetaJson") as HTMLTextAreaElement;
@@ -22,7 +22,8 @@ const UpdateMetaJsonPage = () => {
 
     const formattedData = formattedJsonString(kgtextArea.value);
     if (formattedData) {
-      setInputFields(formattedData);
+      // defaultMetaJson에 formattedData를 덮어씌움
+      setInputFields({ ...inputFields, ...formattedData });
     }
   }, []);
 
@@ -75,7 +76,14 @@ const UpdateMetaJsonPage = () => {
       .replace(/%COLON%/g, ":"); // URL의 원래 콜론 복원
   };
 
-  const highlightFields = ["KGJS_logoName", "KGJS_accessKey", "KGJS_domain", "KGJS_response", "KGJS_uiHide"];
+  const highlightFields = [
+    "KGJS_logoName",
+    "KGJS_accessKey",
+    "KGJS_domain",
+    "KGJS_response",
+    "KGJS_uiHide",
+    "KGJS_responsive"
+  ];
   const getLabelClass = (key) => (highlightFields.includes(key) ? "highlight input_label" : "input_label");
 
   const onClick = async () => {
