@@ -1,7 +1,7 @@
 import AXIOS, { ApiResponse } from "../popup/utils/axios";
 import { Storage } from "../popup/utils/ChromeApi";
 import { JwtUtil } from "../popup/utils/JwtUtil";
-import { fetchToBackground } from "./_setting";
+import { fetchToBackground } from "./setting";
 
 const jwtUtil = new JwtUtil();
 export const AuthApi = {

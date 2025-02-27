@@ -1,6 +1,6 @@
 import { ServiceState } from "../popup/store/_trash/serviceState";
 import { Storage } from "../popup/utils/ChromeApi";
-import { fetchToBackground } from "./_setting";
+import { fetchToBackground } from "./setting";
 
 export const ServiceStateApi = {
   get: async (): Promise<ServiceState> => {
