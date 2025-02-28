@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { theme } from "../../style/theme";
 
 const UrlCheckList = ({ checkList }: { checkList: string[] }) => {
   const [checkedList, setCheckedList] = useState<{ content: string; done: boolean }[]>([]);
@@ -36,9 +37,10 @@ const UrlCheckList = ({ checkList }: { checkList: string[] }) => {
 
 const Wrapper = styled.div`
   margin-top: 20px;
-  border: 1px solid #717171;
+  border: 2px solid ${theme.color.main};
   border-radius: 5px;
   padding: 20px 0;
+  background-color: ${theme.color.white};
   .checkitem {
     color: #333;
     width: 100%;
@@ -49,8 +51,8 @@ const Wrapper = styled.div`
     cursor: pointer;
     &.done {
       text-decoration: line-through;
-      background-color: #f3f3f3;
-      color: #999;
+      background-color: ${theme.color.secondary};
+      color: ${theme.color.main};
     }
   }
 `;

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { usePatchData } from "../../../../../../popup/store/patchData";
-import { Button } from "antd";
-import BottomLayout from "../../../../../components/layout/bottom";
+import Button from "../../../../../components/Button";
 
 const Cafe24MainPage = () => {
   const [domain, setDomain] = useState("");
@@ -24,25 +22,14 @@ const Cafe24MainPage = () => {
   };
 
   return (
-    <Wrapper>
-      <div>
-        <div className="sub_title">디자인 페이지로 이동합니다</div>
-      </div>
-      <BottomLayout>
-        <Button size="large" color="geekblue" type="primary" block onClick={onClick}>
-          이동
-        </Button>
-      </BottomLayout>
-    </Wrapper>
+    <div className="kg_con">
+      <div className="kg_title">카페24 메인 화면</div>
+      <div className="kg_sub">디자인 페이지로 이동합니다</div>
+      <Button className="mt-4" onClick={onClick}>
+        디자인 페이지 이동
+      </Button>
+    </div>
   );
 };
 
-const Wrapper = styled.div`
-  .domain {
-    font-size: 20px;
-    color: #1890ff;
-    margin-top: 20px;
-    font-weight: 700;
-  }
-`;
 export default Cafe24MainPage;

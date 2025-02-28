@@ -9,11 +9,13 @@ const PatchMemo = () => {
   const [openNote, setOpenNote] = useState(false);
 
   return (
-    <Wrapper>
-      <div className="note_title">Note</div>
-      <img className="memo_img" src={Chrome.getUrl("note.png")} onClick={() => setOpenNote(true)} />
+    <>
+      <Wrapper onClick={() => setOpenNote(true)}>
+        <div className="note_title">Note</div>
+        <img className="memo_img" src={Chrome.getUrl("note.png")} />
+      </Wrapper>
       {openNote && <NoteModal setOpen={setOpenNote} />}
-    </Wrapper>
+    </>
   );
 };
 
@@ -27,6 +29,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   .note_title {
     font-size: 16px;
     font-weight: bold;
@@ -38,6 +41,9 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
   margin-bottom: 20px;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export default PatchMemo;

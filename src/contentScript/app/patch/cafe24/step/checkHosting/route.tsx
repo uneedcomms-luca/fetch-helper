@@ -16,7 +16,6 @@ const MoveHosting = () => {
       setPage("login");
       return;
     }
-    console.log("location", location);
     if (location.includes("cafe24.com")) {
       setPage("cafe24");
       return;
@@ -36,8 +35,8 @@ const MoveHosting = () => {
 
   return (
     <>
-      {page === "login" && <Cafe24LoginPage />}
       {page === "cms-modify" && <CheckHostingPage />}
+      {page === "login" && <Cafe24LoginPage />}
       {page === "cafe24" && <Cafe24Home />}
       {page === "na" && <NotMatchingPage />}
     </>

@@ -25,8 +25,8 @@ const PatchCafe24Page = () => {
   return (
     <Wrapper>
       <div className="sidepanel_title">CAFE24</div>
-      <PatchStepHeader steps={steps} step={step} />
       <PatchMemo />
+      <PatchStepHeader steps={steps} step={step} />
       {step === 1 && <CheckHosting />}
       {step === 2 && <UpdateMetaJson />}
       {step === 3 && <BuildScript />}

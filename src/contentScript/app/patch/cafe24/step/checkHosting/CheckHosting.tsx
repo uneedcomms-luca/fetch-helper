@@ -1,9 +1,6 @@
 import { message } from "antd";
 import React from "react";
 import { usePatchData } from "../../../../../../popup/store/patchData";
-import styled from "styled-components";
-import BottomLayout from "../../../../../components/layout/bottom";
-import { theme } from "../../../../../style/theme";
 import Button from "../../../../../components/Button";
 
 const CAFE24_ID = "CAFE24_ACCOUNT_SHOP_ID";
@@ -48,27 +45,14 @@ const CheckHostingPage = () => {
   };
 
   return (
-    <Wrapper className="kg-con">
-      <div className="sub_title">
+    <div className="kg_con">
+      <div className="kg_title">카페24 계정 확인</div>
+      <div className="kg_sub">
         <div>카페 24로 이동합니다</div>
       </div>
       <Button onClick={onClickNext}>이동</Button>
-    </Wrapper>
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  .sub_title {
-    margin-bottom: 20px;
-    font-size: 15px;
-    font-weight: bold;
-  }
-  .button_box {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-`;
 
 export default CheckHostingPage;

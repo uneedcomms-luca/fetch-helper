@@ -1,9 +1,8 @@
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import useInput from "../../../popup/utils/hooks/useInput";
 import { usePatchData } from "../../../popup/store/patchData";
-import BottomLayout from "../layout/bottom";
+import Button from "../Button";
 
 const NotMatchingPage = ({ step }: { step? }) => {
   const { value, setValue, onChange } = useInput("");
@@ -30,29 +29,16 @@ const NotMatchingPage = ({ step }: { step? }) => {
   }, []);
 
   return (
-    <Wrapper>
-      <label>Process 번호를 입력해주세요.</label>
+    <div className="kg_con">
+      <div className="kg_title">CMS 페이지로 이동합니다.</div>
+      <div className="kg_sub">Process 번호를 입력해주세요.</div>
 
       <Input value={value} onChange={onChange} onPressEnter={onClick} placeholder="process 번호를 입력해주세요" />
-      <BottomLayout>
-        <Button size="large" type="primary" block onClick={onClick}>
-          이동
-        </Button>
-      </BottomLayout>
-    </Wrapper>
+      <Button className="mt-3" onClick={onClick}>
+        이동
+      </Button>
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  .title {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-`;
 
 export default NotMatchingPage;

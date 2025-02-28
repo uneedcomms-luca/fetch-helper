@@ -3,8 +3,9 @@ import styled from "styled-components";
 import UrlCheckList from "../../../../../components/patch/UrlCheckList";
 import { PatchData, usePatchData } from "../../../../../../popup/store/patchData";
 import { mappingPageScript } from "../../../../../utils/patch/script";
-import { Button, message } from "antd";
+import { Button as AButton, message } from "antd";
 import BottomLayout from "../../../../../components/layout/bottom";
+import Button from "../../../../../components/Button";
 
 const Cafe24DesignPage = () => {
   const location = window.location.href;
@@ -65,33 +66,36 @@ const Cafe24DesignPage = () => {
 
   return (
     <Wrapper>
-      <div className="flex_box">
-        <div className="">
+      <div className="kg_con">
+        <div className="kg_title">CAFE24 디자인 페이지</div>
+        <div className="kg_sub">
           <strong>{env.toUpperCase()}</strong> 환경입니다. <br />
           통합스크립트를 {`<body>`} 최상단에 주입하고 <br />
           아래의 리스트를 통해 확인하세요.
         </div>
+
         <div className="mt-2">
           <UrlCheckList checkList={checkList} />
         </div>
         <div className="copy_box">
-          <Button type="dashed" onClick={onClickScriptCopy}>
-            통합 스크립트 📃
-          </Button>
-          <Button type="dashed" onClick={() => onClickMappingSciprtCopy("pc")}>
-            PC - 계정연동 페이지 스크립트 📃
-          </Button>
-          <Button type="dashed" onClick={() => onClickMappingSciprtCopy("mobile")}>
-            MOBILE - 계정연동 페이지 스크립트 📃
-          </Button>
+          <AButton type="dashed" onClick={onClickScriptCopy}>
+            통합 스크립트
+          </AButton>
+          <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("pc")}>
+            계정연동 스크립트 - PC
+          </AButton>
+          <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("mobile")}>
+            계정연동 스크립트 - MOBILE
+          </AButton>
         </div>
+        <Button className="mt-4" onClick={onClick}>모두 저장</Button>
       </div>
 
-      <BottomLayout>
+      {/* <BottomLayout>
         <Button size="large" type="primary" block onClick={onClick}>
           모두 저장
         </Button>
-      </BottomLayout>
+      </BottomLayout> */}
     </Wrapper>
   );
 };

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, Checkbox, Input, message } from "antd";
+import { Checkbox, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { useNavigate } from "react-router-dom";
 import BottomLayout from "../../../../../components/layout/bottom";
 import Alert from "antd/es/alert/Alert";
+import Button from "../../../../../components/Button";
 
 const UpdateMetaJsonPage = () => {
   const navigate = useNavigate();
@@ -82,7 +83,8 @@ const UpdateMetaJsonPage = () => {
     "KGJS_domain",
     "KGJS_response",
     "KGJS_uiHide",
-    "KGJS_responsive"
+    "KGJS_responsive",
+    "KGJS_shopName"
   ];
   const getLabelClass = (key) => (highlightFields.includes(key) ? "highlight input_label" : "input_label");
 
@@ -109,7 +111,9 @@ const UpdateMetaJsonPage = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper className="kg_con">
+      <div className="kg_title">Meta Json 수정</div>
+      <div className="kg_sub">수정 후 저장 버튼을 눌러주세요.</div>
       <div className="input_wrapper top">
         {Object.keys(inputFields).map((key) => {
           return (
@@ -136,11 +140,9 @@ const UpdateMetaJsonPage = () => {
       <div className="mt-2">
         <TextArea autoSize={{ minRows: 10 }} value={textAreaValue} />
       </div>
-      <BottomLayout>
-        <Button size="large" type="primary" block onClick={onClick}>
-          저장
-        </Button>
-      </BottomLayout>
+      <Button className="mt-4" onClick={onClick}>
+        저장
+      </Button>
     </Wrapper>
   );
 };
