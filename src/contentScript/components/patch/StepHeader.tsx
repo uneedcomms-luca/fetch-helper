@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { usePatchData } from "../../../popup/store/patchData";
-import NoteModal from "../NoteModal";
 import { theme } from "../../style/theme";
 
 interface Props {
@@ -15,8 +14,6 @@ const PatchStepHeader = ({ steps, step }: Props) => {
   const onClick = (step: number) => {
     usePatchData.updateStep(step, navigate);
   };
-
-  const [openNote, setOpenNote] = useState(false);
 
   return (
     <Wrapper>
@@ -36,7 +33,7 @@ const PatchStepHeader = ({ steps, step }: Props) => {
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
-  background-color: ${theme.color.main};
+  background: linear-gradient(145deg, #0e3a7c, #133564);
   padding: 10px 15px 30px 15px;
   border-radius: 15px;
 

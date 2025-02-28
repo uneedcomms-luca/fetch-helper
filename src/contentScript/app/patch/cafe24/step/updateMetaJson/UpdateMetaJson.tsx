@@ -10,7 +10,15 @@ import Button from "../../../../../components/Button";
 
 const UpdateMetaJsonPage = () => {
   const navigate = useNavigate();
-  const [inputFields, setInputFields] = useState({ KGJS_responsive: false });
+  const [inputFields, setInputFields] = useState({
+    KGJS_responsive: false,
+    KGJS_shopName: "",
+    KGJS_logoName: "",
+    KGJS_accessKey: "",
+    KGJS_domain: "",
+    KGJS_response: "",
+    KGJS_uiHide: false
+  });
 
   const [textAreaValue, setTextAreaValue] = useState("");
   const kgtextArea = document.querySelector("#copyMetaJson") as HTMLTextAreaElement;

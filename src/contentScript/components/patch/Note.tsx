@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Chrome } from "../../../popup/utils/ChromeApi";
 import { theme } from "../../style/theme";
 
-const PatchMemo = () => {
+const PatchNote = () => {
   const [openNote, setOpenNote] = useState(false);
 
   return (
@@ -20,9 +20,9 @@ const PatchMemo = () => {
 };
 
 const Wrapper = styled.div`
-  width: 150px;
+  width: 170px;
   height: 60px;
-  padding: 0 10px;
+  padding: 0 15px;
   background-color: ${theme.color.secondary};
   border: 2px solid ${theme.color.main};
   border-radius: 15px;
@@ -46,4 +46,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default PatchMemo;
+export default PatchNote;

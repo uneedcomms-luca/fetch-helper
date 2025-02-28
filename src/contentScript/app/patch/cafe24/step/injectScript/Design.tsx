@@ -14,13 +14,13 @@ const Cafe24DesignPage = () => {
   const [patchData, setPatchData] = useState<PatchData>();
   const checkList = [
     "메인 (main.html)",
-    "주문 완료 (order/result.html)",
     "로그인 (member/login.html)",
     "회원가입 (member/join.html)",
     "주문서 작성 (order/orderform.html)",
-    "계정 연동 (member/mapping_login.html)",
+    "주문 완료 (order/result.html)",
+    "[M]장바구니 (order/basket.html)",
     "[M]상품 상세 (detail.html)",
-    "[M]장바구니 (order/basket.html)"
+    "계정 연동 (member/mapping_login.html)"
   ];
   useEffect(() => {
     if (location.includes("/disp/admin/editor/main")) {
@@ -73,29 +73,28 @@ const Cafe24DesignPage = () => {
           통합스크립트를 {`<body>`} 최상단에 주입하고 <br />
           아래의 리스트를 통해 확인하세요.
         </div>
-
-        <div className="mt-2">
-          <UrlCheckList checkList={checkList} />
-        </div>
         <div className="copy_box">
           <AButton type="dashed" onClick={onClickScriptCopy}>
             통합 스크립트
           </AButton>
-          <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("pc")}>
-            계정연동 스크립트 - PC
-          </AButton>
-          <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("mobile")}>
-            계정연동 스크립트 - MOBILE
-          </AButton>
+          <div>계정 연동 스크립트</div>
+          <div className="script_box">
+            <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("pc")}>
+              PC
+            </AButton>
+            <AButton type="dashed" onClick={() => onClickMappingSciprtCopy("mobile")}>
+              MOBILE
+            </AButton>
+          </div>
         </div>
-        <Button className="mt-4" onClick={onClick}>모두 저장</Button>
-      </div>
 
-      {/* <BottomLayout>
-        <Button size="large" type="primary" block onClick={onClick}>
+        <div className="mt-2">
+          <UrlCheckList checkList={checkList} />
+        </div>
+        <Button className="mt-4" onClick={onClick}>
           모두 저장
         </Button>
-      </BottomLayout> */}
+      </div>
     </Wrapper>
   );
 };
@@ -106,15 +105,13 @@ const Wrapper = styled.div`
     flex-direction: column;
     gap: 10px;
     margin: 20px;
-  }
-  .copy_content {
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 8px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 1px solid #488bf6;
-    width: 100%;
+    .script_box {
+      display: flex;
+      gap: 10px;
+      button {
+        flex: 1;
+      }
+    }
   }
 `;
 

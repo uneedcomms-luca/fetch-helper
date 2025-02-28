@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import PatchStepHeader from "../../../components/patch/StepHeader";
@@ -7,8 +7,7 @@ import BuildScript from "./step/buildScript/route";
 import UpdateScript from "./step/updateScript/route";
 import InjectScript from "./step/injectScript/route";
 import CheckHosting from "./step/checkHosting/route";
-import { theme } from "../../../style/theme";
-import PatchMemo from "../../../components/patch/Memo";
+import PatchNote from "../../../components/patch/Note";
 
 const PatchCafe24Page = () => {
   const params = useParams();
@@ -25,7 +24,7 @@ const PatchCafe24Page = () => {
   return (
     <Wrapper>
       <div className="sidepanel_title">CAFE24</div>
-      <PatchMemo />
+      <PatchNote />
       <PatchStepHeader steps={steps} step={step} />
       {step === 1 && <CheckHosting />}
       {step === 2 && <UpdateMetaJson />}

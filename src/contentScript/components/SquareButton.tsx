@@ -17,7 +17,7 @@ const SquareButton = (props: Props) => {
 
 const Wrapper = styled.button`
   width: 100%;
-  padding: 20px 0;
+  padding: 16px 0;
 
   background: none;
   background-color: ${theme.color.main};
@@ -25,7 +25,6 @@ const Wrapper = styled.button`
   &.kg_secondary {
     background-color: ${theme.color.secondary};
     color: ${theme.color.main};
-    /* border: 2px solid ${theme.color.main}; */
     &:hover {
       background-color: ${theme.color.light};
     }

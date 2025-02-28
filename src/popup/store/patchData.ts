@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Chrome, Storage } from "../utils/ChromeApi";
+import { Note } from "./note";
 
 export const STORAGE_PATCH_KEY = "kgPatchData";
 
@@ -59,12 +60,13 @@ export const usePatchData = () => {
     getPatchData,
     patchData,
     startPatch,
-    endPatch,
+    endPatch
   };
 };
 
 usePatchData.endPatch = () => {
   Storage.DELETE(STORAGE_PATCH_KEY);
+  Note.delete();
   window.location.reload();
 };
 

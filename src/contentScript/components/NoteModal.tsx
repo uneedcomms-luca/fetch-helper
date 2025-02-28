@@ -2,16 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Storage } from "../../popup/utils/ChromeApi";
 import TextArea from "antd/es/input/TextArea";
-import { Button } from "antd";
 import { debounce } from "lodash";
+import Button from "./Button";
+import SquareButton from "./SquareButton";
+import { Note } from "../../popup/store/note";
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const NoteModal = ({ setOpen }: Props) => {
-  // 바깥을 클릭하면 모달창 닫기
-
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -19,13 +19,11 @@ const NoteModal = ({ setOpen }: Props) => {
   }, []);
 
   const getContent = async () => {
-    const content = await Storage.GET("kg_note");
+    const content = await Note.get();
     setContent(content);
   };
   const saveContent = useCallback(
-    debounce((value) => {
-      Storage.SET("kg_note", value);
-    }, 500), // 500ms 후 실행
+    debounce((value) => Note.set(value), 500),
     []
   );
 
@@ -43,6 +41,9 @@ const NoteModal = ({ setOpen }: Props) => {
         onChange={(e) => onChange(e)}
         style={{ height: "100%" }}
       />
+      <div className="btn_box">
+        <SquareButton onClick={() => setOpen(false)}>닫기</SquareButton>
+      </div>
     </Wrapper>
   );
 };
@@ -59,13 +60,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  .btn_box {
+    margin-top: 20px;
+    width: 88%;
+  }
   .note_content {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 400px;
     background-color: white;
-    border-radius: 3px;
+
+    border-radius: 10px;
   }
 `;
 
