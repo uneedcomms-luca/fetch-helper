@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { usePatchData } from "../../../popup/store/patchData";
 import NoteModal from "../NoteModal";
+import { theme } from "../../style/theme";
 
 interface Props {
   steps: { step: number; title: string }[];
@@ -21,10 +22,6 @@ const PatchStepHeader = ({ steps, step }: Props) => {
     <Wrapper>
       <div className="header_flex_box">
         {step && <div className="step_now">{`${step}. ${steps[step - 1].title}`}</div>}
-
-        <div className="kg_note" onClick={() => setOpenNote(true)}>
-          📝
-        </div>
       </div>
       <div className="step_wrapper">
         {steps.map((s) => (
@@ -33,13 +30,16 @@ const PatchStepHeader = ({ steps, step }: Props) => {
           </div>
         ))}
       </div>
-      {openNote && <NoteModal setOpen={setOpenNote} />}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
+  background-color: ${theme.color.main};
+  padding: 10px 15px 30px 15px;
+  border-radius: 15px;
+
   .header_flex_box {
     display: flex;
     justify-content: space-between;
@@ -50,37 +50,48 @@ const Wrapper = styled.div`
     }
     .step_now {
       margin: 10px 0;
-      color: #333;
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 20px;
+      color: ${theme.color.secondary};
     }
   }
   .step_wrapper {
+    width: 100%;
+    background-color: ${theme.color.white};
+    border-radius: 50px;
+    margin-top: 50px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px 20px 20px;
-    border-bottom: 1px solid #e9e9e9;
+    padding: 7px 40px;
   }
 
   .step {
     padding: 10px;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9f9f9;
-    border-radius: 50%;
-    color: #999;
+    /* background-color: ${theme.color.secondary}; */
+    color: ${theme.color.font};
+
+    border-radius: 30px;
     cursor: pointer;
+    &:hover {
+      background-color: ${theme.color.secondary};
+    }
   }
 
   .active {
-    color: #ffffff;
-    background-color: #5a57f3;
+    color: ${theme.color.secondary};
+    background-color: ${theme.color.main};
     font-weight: bold;
+    &:hover {
+      background-color: ${theme.color.font};
+    }
   }
 `;
 

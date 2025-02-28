@@ -1,8 +1,10 @@
-import { Button, message } from "antd";
+import { message } from "antd";
 import React from "react";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import styled from "styled-components";
 import BottomLayout from "../../../../../components/layout/bottom";
+import { theme } from "../../../../../style/theme";
+import Button from "../../../../../components/Button";
 
 const CAFE24_ID = "CAFE24_ACCOUNT_SHOP_ID";
 const CAFE24_PW = "CAFE24_ACCOUNT_PASSWORD";
@@ -46,16 +48,11 @@ const CheckHostingPage = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper className="kg-con">
       <div className="sub_title">
         <div>카페 24로 이동합니다</div>
       </div>
-
-      <BottomLayout>
-        <Button size="large" type="primary" block onClick={onClickNext}>
-          이동
-        </Button>
-      </BottomLayout>
+      <Button onClick={onClickNext}>이동</Button>
     </Wrapper>
   );
 };
@@ -65,7 +62,6 @@ const Wrapper = styled.div`
     margin-bottom: 20px;
     font-size: 15px;
     font-weight: bold;
-    color: #333;
   }
   .button_box {
     display: flex;

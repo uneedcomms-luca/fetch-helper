@@ -7,6 +7,8 @@ import BuildScript from "./step/buildScript/route";
 import UpdateScript from "./step/updateScript/route";
 import InjectScript from "./step/injectScript/route";
 import CheckHosting from "./step/checkHosting/route";
+import { theme } from "../../../style/theme";
+import PatchMemo from "../../../components/patch/Memo";
 
 const PatchCafe24Page = () => {
   const params = useParams();
@@ -22,8 +24,9 @@ const PatchCafe24Page = () => {
 
   return (
     <Wrapper>
-      <div className="title">CAFE24</div>
+      <div className="sidepanel_title">CAFE24</div>
       <PatchStepHeader steps={steps} step={step} />
+      <PatchMemo />
       {step === 1 && <CheckHosting />}
       {step === 2 && <UpdateMetaJson />}
       {step === 3 && <BuildScript />}
@@ -34,11 +37,11 @@ const PatchCafe24Page = () => {
 };
 
 const Wrapper = styled.section`
-  .title {
-    font-size: 16px;
+  padding: 20px 12px;
+  .sidepanel_title {
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
   }
 `;
 
