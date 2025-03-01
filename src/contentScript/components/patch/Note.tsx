@@ -20,7 +20,7 @@ const PatchNote = () => {
 };
 
 const Wrapper = styled.div`
-  width: 170px;
+  width: 150px;
   height: 60px;
   padding: 0 15px;
   background-color: ${theme.color.secondary};
@@ -36,8 +36,8 @@ const Wrapper = styled.div`
     color: ${theme.color.main};
   }
   .memo_img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
   }
   margin-bottom: 20px;

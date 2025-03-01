@@ -55,6 +55,7 @@ const Wrapper = styled.div`
     gap: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
+    font-size: 14px;
   }
 `;
 

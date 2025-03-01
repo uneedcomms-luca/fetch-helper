@@ -57,18 +57,19 @@ const Wrapper = styled.div`
     width: 100%;
     background-color: ${theme.color.white};
     border-radius: 50px;
-    margin-top: 50px;
+    margin-top: 10px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 40px;
+    padding: 2px 60px;
   }
 
   .step {
     padding: 10px;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
