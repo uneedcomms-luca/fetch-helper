@@ -4,7 +4,6 @@ import { Checkbox, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { useNavigate } from "react-router-dom";
-import BottomLayout from "../../../../../components/layout/bottom";
 import Alert from "antd/es/alert/Alert";
 import Button from "../../../../../components/Button";
 
@@ -16,7 +15,6 @@ const UpdateMetaJsonPage = () => {
     KGJS_logoName: "",
     KGJS_accessKey: "",
     KGJS_domain: "",
-    KGJS_response: "",
     KGJS_uiHide: false
   });
 
@@ -89,7 +87,6 @@ const UpdateMetaJsonPage = () => {
     "KGJS_logoName",
     "KGJS_accessKey",
     "KGJS_domain",
-    "KGJS_response",
     "KGJS_uiHide",
     "KGJS_responsive",
     "KGJS_shopName"
