@@ -5,7 +5,6 @@ import useInput from "../../../../../../popup/utils/hooks/useInput";
 import TextArea from "antd/es/input/TextArea";
 import { usePatchData } from "../../../../../../popup/store/patchData";
 import { useNavigate } from "react-router-dom";
-import BottomLayout from "../../../../../components/layout/bottom";
 import { scriptContent } from "../../../../../utils/patch/script";
 import Button from "../../../../../components/Button";
 
